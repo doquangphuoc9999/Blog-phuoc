@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Prototipo-master/homeBlog.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Prototipo-master" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/blog-single.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/blogSingle.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/homeBlog.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist/editCategory.jsp" value="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist/editPost.jsp" value="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist" />
+      </map>
+    </option>
+  </component>
+</project>
