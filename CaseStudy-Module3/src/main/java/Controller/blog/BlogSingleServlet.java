@@ -1,6 +1,8 @@
 package Controller.blog;
 
+import Dao.CategoryDao;
 import Dao.PostDao;
+import Model.Category;
 import Model.Post;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +19,7 @@ import java.util.List;
 @WebServlet(name = "Blog-Single-Servlet", urlPatterns = "/blogSingle")
 public class BlogSingleServlet extends HttpServlet {
     PostDao postDao = new PostDao();
+    CategoryDao categoryDao = new CategoryDao();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -24,13 +27,16 @@ public class BlogSingleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Post postList = null;
         List<Post> listRandom = new ArrayList<Post>();
+        List<Category> categoryList = null;
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             postList = postDao.findById(id);
             listRandom = postDao.limit_new_post();
+            categoryList = categoryDao.selectAll();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        request.setAttribute("listCategory",categoryList);
         request.setAttribute("list",listRandom);
         request.setAttribute("postListPageSingle",postList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("homeBlog/blogSingle.jsp");

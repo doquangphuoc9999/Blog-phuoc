@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <title>Colorlib Balita &mdash; Minimal Blog Template</title>
+    <title>Blog Single</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="homeBlog/fonts/flaticon/font/flaticon.css">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" href="homeBlog/css/style.css">
+    <link rel="stylesheet" type="text/css" href="homeBlog/css/style.css">
 </head>
 <body>
 
@@ -53,7 +53,7 @@
         <div class="row pt-5">
             <div class="col-12 text-center">
                 <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
-                <h1><a href="/homeBlog">Balita</a></h1>
+                <h1><a href="/homeBlog">Ông Phước Vlog</a></h1>
             </div>
         </div>
     </div>
@@ -65,39 +65,34 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link active" href="/homeBlog">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Travel</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="category.html">Asia</a>
-                            <a class="dropdown-item" href="category.html">Europe</a>
-                            <a class="dropdown-item" href="category.html">Dubai</a>
-                            <a class="dropdown-item" href="category.html">Africa</a>
-                            <a class="dropdown-item" href="category.html">South America</a>
-                        </div>
+<%--                    <li class="nav-item dropdown">--%>
+<%--                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Travel</a>--%>
+<%--                        <div class="dropdown-menu" aria-labelledby="dropdown04">--%>
+<%--                            <a class="dropdown-item" href="#">Asia</a>--%>
+<%--                            <a class="dropdown-item" href="#">Europe</a>--%>
+<%--                            <a class="dropdown-item" href="#">Dubai</a>--%>
+<%--                            <a class="dropdown-item" href="#">Africa</a>--%>
+<%--                            <a class="dropdown-item" href="#">South America</a>--%>
+<%--                        </div>--%>
 
-                    </li>
+<%--                    </li>--%>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown05">
-                            <a class="dropdown-item" href="category.html">Lifestyle</a>
-                            <a class="dropdown-item" href="category.html">Food</a>
-                            <a class="dropdown-item" href="category.html">Adventure</a>
-                            <a class="dropdown-item" href="category.html">Travel</a>
-                            <a class="dropdown-item" href="category.html">Business</a>
+                            <c:forEach items="${listCategory}" var="list">
+                                <a class="dropdown-item" href="/category?id=${list.id}">${list.nameCategory}</a>
+                            </c:forEach>
                         </div>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
+                        <a class="nav-link" href="/aboutBlog">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="/contact">Contact</a>
                     </li>
                 </ul>
 
@@ -281,42 +276,20 @@
                     <h3 class="heading">Popular Posts</h3>
                     <div class="post-entry-sidebar">
                         <ul>
-                            <li>
-                                <a href="">
-                                    <img src="homeBlog/images/img_1.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                            <c:forEach items="${list}" var="listRandom">
+                                <li>
+                                    <a href="/blogSingle?id=${listRandom.idPost}">
+                                        <img src="${listRandom.image}" alt="Image placeholder" class="mr-4">
+                                        <div class="text">
+                                            <h4>${listRandom.title}</h4>
+                                            <div class="post-meta">
+                                                <span class="mr-2">${listRandom.publisht}</span> &bullet;
+                                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="homeBlog/images/img_1.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="homeBlog/images/img_1.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>

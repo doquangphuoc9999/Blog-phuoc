@@ -44,9 +44,9 @@
                 </div>
                 <div class="col-2 search-top">
                     <!-- <a href="#"><span class="fa fa-search"></span></a> -->
-                    <form action="#" class="search-top-form">
+                    <form action="/searchTitle" method="get" class="search-top-form">
                         <span class="icon fa fa-search"></span>
-                        <input type="text" placeholder="Type keyword to search...">
+                        <input type="text" name="title" placeholder="Type keyword to search...">
                     </form>
                 </div>
                 <div class="col-4 search-right"><!-- <a href="#"><span class="fa fa-search"></span></a> -->
@@ -59,7 +59,7 @@
                     </c:if>
                     <c:if test="${sessionScope.user == null}">
                         <a href="/login">Login |</a>
-                        <a href="#">Sign up</a>
+                        <a href="/SignUp">Sign up</a>
                     </c:if>
                 </div>
             </div>
@@ -82,36 +82,34 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
+                        <a class="nav-link active" href="#">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Travel</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="category.html">Asia</a>
-                            <a class="dropdown-item" href="category.html">Europe</a>
-                            <a class="dropdown-item" href="category.html">Dubai</a>
-                            <a class="dropdown-item" href="category.html">Africa</a>
-                            <a class="dropdown-item" href="category.html">South America</a>
-                        </div>
+<%--                    <li class="nav-item dropdown">--%>
+<%--                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Travel</a>--%>
+<%--                        <div class="dropdown-menu" aria-labelledby="dropdown04">--%>
+<%--                            <a class="dropdown-item" href="#">Asia</a>--%>
+<%--                            <a class="dropdown-item" href="#">Europe</a>--%>
+<%--                            <a class="dropdown-item" href="#">Dubai</a>--%>
+<%--                            <a class="dropdown-item" href="#">Africa</a>--%>
+<%--                            <a class="dropdown-item" href="#">South America</a>--%>
+<%--                        </div>--%>
 
-                    </li>
+<%--                    </li>--%>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown05">
-                            <a class="dropdown-item" href="category.html">Lifestyle</a>
-                            <a class="dropdown-item" href="category.html">Food</a>
-                            <a class="dropdown-item" href="category.html">Adventure</a>
-                            <a class="dropdown-item" href="category.html">Travel</a>
-                            <a class="dropdown-item" href="category.html">Business</a>
+                            <c:forEach var="list" items="${listCategory}">
+                                <a class="dropdown-item" href="/category?id=${list.id}">${list.nameCategory}</a>
+                            </c:forEach>
                         </div>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="/aboutBlog">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="/contact">Contact</a>
                     </li>
                 </ul>
 
@@ -149,7 +147,7 @@
         <div class="row">
             <c:forEach var="list" items="${limitList}">
                 <div class="col-md-6 col-lg-4">
-                    <a href="blog-single.html" class="a-block d-flex align-items-center height-md" style="background-image: url('${list.image}'); ">
+                    <a href="/blogSingle?id=${list.idPost}" class="a-block d-flex align-items-center height-md" style="background-image: url('${list.image}'); ">
                         <div class="text">
                             <div class="post-meta">
                                 <span class="category">${list.title}</span>
@@ -219,7 +217,7 @@
                     <div class="col-md-12">
                         <c:forEach var="list" items="${listRanDom}">
                             <div class="post-entry-horzontal">
-                                <a href="blog-single.html">
+                                <a href="/blogSingle?id=${list.idPost}">
                                     <div class="image element-animate"  data-animate-effect="fadeIn" style="background-image: url(${list.image});"></div>
                                     <span class="text">
                       <div class="post-meta">
@@ -253,9 +251,9 @@
                 <!-- END sidebar-box -->
                 <div class="sidebar-box">
                     <div class="bio text-center">
-                        <img src="../homeBlog/images/person_1.jpg" alt="Image Placeholder" class="img-fluid">
+                        <img src="../homeBlog/images/avataAbout.jpg" alt="Image Placeholder" class="img-fluid">
                         <div class="bio-body">
-                            <h2>Meagan Smith</h2>
+                            <h2>Quang Phuoc</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
                             <p><a href="#" class="btn btn-primary btn-sm">Read my bio</a></p>
                             <p class="social">
@@ -272,42 +270,20 @@
                     <h3 class="heading">Popular Posts</h3>
                     <div class="post-entry-sidebar">
                         <ul>
-                            <li>
-                                <a href="/blogSingle">
-                                    <img src="../homeBlog/images/img_2.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                            <c:forEach items="${limitList}" var="list">
+                                <li>
+                                    <a href="/blogSingle?id=${list.idPost}">
+                                        <img src="${list.image}" alt="Image placeholder" class="mr-4">
+                                        <div class="text">
+                                            <h4>${list.title}</h4>
+                                            <div class="post-meta">
+                                                <span class="mr-2">${list.publisht}</span> &bullet;
+                                                <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/blogSingle">
-                                    <img src="../homeBlog/images/img_4.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/blogSingle">
-                                    <img src="../homeBlog/images/img_12.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>

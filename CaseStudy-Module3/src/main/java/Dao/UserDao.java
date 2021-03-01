@@ -17,7 +17,23 @@ public class UserDao extends DBDAO implements IUSER<Users> {
     private final String SAVE_USER = "INSERT INTO Users(userName, passwordUser,fullName) VALUES(?,?,?)";
     private final String UPDATE_USER = "UPDATE Users SET userName = ?, fullName = ? WHERE id = ?";
     private final String DELETE_USER = "DELETE FROM Users WHERE id = ?";
+    private final String CREATE_USER = "INSERT INTO Users(userName, passwordUser, fullName, statusUser) VALUES (?, ?,?, 0)";
 
+
+    public void createUser(Users object){
+        try(
+                Connection connection = getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER);
+                )
+        {
+            preparedStatement.setString(1,object.getUserName());
+            preparedStatement.setString(2,object.getPasswordUser());
+            preparedStatement.setString(3,object.getFullName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
     @Override
     public List<Users> selectAll() throws SQLException {
         List<Users> list = new ArrayList<>();

@@ -15,7 +15,17 @@ public class Users {
         this.statusUser = status;
         this.is_delete = is_delete;
     }
-    public Users(int id,String userName, String fullName, int status) {
+
+    public Users(String userName, String fullName, String passwordUser) {
+        this.userName = userName;
+        this.fullName = fullName;
+        this.passwordUser = passwordUser;
+    }
+
+    public Users() {
+    }
+
+    public Users(int id, String userName, String fullName, int status) {
         this.id = id;
         this.userName = userName;
         this.fullName = fullName;

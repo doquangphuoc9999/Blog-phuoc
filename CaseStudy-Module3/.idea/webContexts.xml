@@ -4,9 +4,13 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Prototipo-master/homeBlog.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Prototipo-master" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/about.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/blog-single.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/blogSingle.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/category.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/contact.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/homeBlog/homeBlog.jsp" value="file://$PROJECT_DIR$/src/main/webapp/homeBlog" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/signUp/SignUp.jsp" value="file://$PROJECT_DIR$/src/main/webapp/signUp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist/editCategory.jsp" value="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist/editPost.jsp" value="file://$PROJECT_DIR$/src/main/webapp/startbootstrap/dist" />
       </map>

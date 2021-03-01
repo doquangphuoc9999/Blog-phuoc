@@ -21,6 +21,79 @@ public class PostDao extends DBDAO implements IBDAO<Post> {
     private final String LIMIT_NEW_POST = "select post.*,  nameCategory, name from(post left join category on post.idCategory = category.id) left join author on post.idAuthor =author.id order by post.id desc limit 3";
     private final String DELETE_POST = "DELETE FROM post WHERE id = ?";
     private final String RANDOM_LIST_POST = "select post.*,  nameCategory, name from(post left join category on post.idCategory = category.id) left join author on post.idAuthor =author.id order by rand() limit 3";
+    private final String SELECT_BYID_CATEGORY = "select post.*,  nameCategory, name from(post left join category on post.idCategory = category.id) left join author on post.idAuthor =author.id where post.idCategory = ?";
+    private final String SEARCH_TITLE_POST = "SELECT post.*,category.nameCategory,author.name from (post left join category ON post.idCategory = category.id) left join author on post.idAuthor =  author.id WHERE post.title like concat('%',?,'%')";
+
+    public List<Post> searchTitlePost(String titles){
+        List<Post> list = new ArrayList<>();
+        try
+                (
+                        Connection connection = getConnection();
+                        PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_TITLE_POST);
+                )
+        {
+            preparedStatement.setString(1,titles);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int idPost = resultSet.getInt("id");
+                String title = resultSet.getString("title");
+                String fullContent = resultSet.getString("fullContent");
+                String shortContent = resultSet.getString("shortContent");
+                String str = resultSet.getString("publisht");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+                String image = resultSet.getString("image");
+                int idCategory = resultSet.getInt("idCategory");
+                String name = resultSet.getString("nameCategory");
+                Category category = new Category(idCategory, name);
+                int idAuthor = resultSet.getInt("idAuthor");
+                String authorName = resultSet.getString("name");
+                Author author = new Author(idAuthor,authorName);
+                Post post = new Post(idPost,title,fullContent,shortContent,dateTime,image,author,category);
+                list.add(post);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+
+    public List<Post> listPostByIdCategory(int id){
+        List<Post> list = new ArrayList<>();
+        try
+                (
+                        Connection connection = getConnection();
+                        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BYID_CATEGORY);
+                )
+        {
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int idPost = resultSet.getInt("id");
+                String title = resultSet.getString("title");
+                String fullContent = resultSet.getString("fullContent");
+                String shortContent = resultSet.getString("shortContent");
+                String str = resultSet.getString("publisht");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+                String image = resultSet.getString("image");
+                int idCategory = resultSet.getInt("idCategory");
+                String name = resultSet.getString("nameCategory");
+                Category category = new Category(idCategory, name);
+                int idAuthor = resultSet.getInt("idAuthor");
+                String authorName = resultSet.getString("name");
+                Author author = new Author(idAuthor,authorName);
+                Post post = new Post(idPost,title,fullContent,shortContent,dateTime,image,author,category);
+                list.add(post);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+
 
     public List<Post> random_list_post(){
         List<Post> list = new ArrayList<>();
